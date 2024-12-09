@@ -13,7 +13,7 @@ function check_file() {
         for link in $LINKS; do
                 # Use curl to check the URL
                 # --write-out: Format the output - here: get only the http code
-                response=$(curl -o /dev/null --write-out "%{http_code}" --silent --head --max-time 10 "$link")
+                response=$(curl -o /dev/null --write-out "%{http_code}" --silent --max-time 10 -L "$link")
                 if [[ "$response" -eq 200 ]]; then
                         echo "[OK] $link"
                 else
